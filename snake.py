@@ -1,3 +1,4 @@
+import turtle
 from turtle import Turtle
 
 MOVEMENT_DISTANCE = 20
@@ -26,3 +27,16 @@ class Snake:
             self.body[segment].goto(new_x, new_y)
 
         self.body[0].forward(MOVEMENT_DISTANCE)
+
+
+    def up(self):
+        self.body[0].setheading(90)
+
+    def down(self):
+        self.body[0].setheading(270)
+
+    def right(self):
+        self.body[0].setheading(0)
+
+    def left(self):
+        self.body[0].setheading(180)
