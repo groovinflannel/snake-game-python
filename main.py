@@ -1,4 +1,6 @@
 from turtle import Turtle, Screen
+
+from food import Food
 from snake import Snake
 import time
 
@@ -12,6 +14,7 @@ screen.tracer(0)
 # create initial snake body
 
 snake = Snake()
+food = Food()
 
 # listen for keyboard input
 
