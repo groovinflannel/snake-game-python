@@ -1,11 +1,12 @@
-import turtle
 from turtle import Turtle
 
+STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVEMENT_DISTANCE = 20
 UP = 90
 DOWN = 270
 RIGHT = 0
 LEFT = 180
+
 
 class Snake:
 
@@ -15,14 +16,19 @@ class Snake:
         self.head = self.body[0]
 
     def create_body(self):
-        for turtle in range(0, 3):
-            turt = Turtle(shape="square")
-            turt.color("white")
-            turt.penup()
-            self.body.append(turt)
-            current_index = self.body.index(turt)
-            left_spacing = -20
-            turt.setx(current_index * left_spacing)
+        for position in STARTING_POSITIONS:
+            self.add_body_segment(position)
+
+    def add_body_segment(self, position):
+        turt = Turtle(shape="square")
+        turt.speed("fastest")
+        turt.color("white")
+        turt.penup()
+        turt.goto(position)
+        self.body.append(turt)
+
+    def extend_body(self):
+        self.add_body_segment(self.body[-1].position())
 
     def move(self):
 
@@ -32,7 +38,6 @@ class Snake:
             self.body[segment].goto(new_x, new_y)
 
         self.body[0].forward(MOVEMENT_DISTANCE)
-
 
     def up(self):
         if self.head.heading() != DOWN:
