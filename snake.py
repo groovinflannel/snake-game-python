@@ -2,12 +2,17 @@ import turtle
 from turtle import Turtle
 
 MOVEMENT_DISTANCE = 20
+UP = 90
+DOWN = 270
+RIGHT = 0
+LEFT = 180
 
 class Snake:
 
     def __init__(self):
         self.body = []
         self.create_body()
+        self.head = self.body[0]
 
     def create_body(self):
         for turtle in range(0, 3):
@@ -30,13 +35,13 @@ class Snake:
 
 
     def up(self):
-        self.body[0].setheading(90)
+        self.head.setheading(UP)
 
     def down(self):
-        self.body[0].setheading(270)
+        self.head.setheading(DOWN)
 
     def right(self):
-        self.body[0].setheading(0)
+        self.head.setheading(RIGHT)
 
     def left(self):
-        self.body[0].setheading(180)
+        self.head.setheading(LEFT)
